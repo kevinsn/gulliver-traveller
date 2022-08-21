@@ -2,7 +2,8 @@
 import java.util.Date;
 
 public class Aluguel {
-	
+
+	private static int contador = 1;
 	private int idAluguel;
 	private String tipoAluguel;
 	private Date dataRetirada;
@@ -11,17 +12,19 @@ public class Aluguel {
 	private Double valor;	
 	
 	public Aluguel() {
-		
+		idAluguel += contador;
+		contador++;
 	}
 	
-	public Aluguel(int idAluguel, String tipoAluguel, Date dataRetirada, Date dataDevolucao, Double kmRodado,
+	public Aluguel(String tipoAluguel, Date dataRetirada, Date dataDevolucao, Double kmRodado,
 			Double valor) {
-		this.idAluguel = idAluguel;
+		this.idAluguel += contador;
 		this.tipoAluguel = tipoAluguel;
 		this.dataRetirada = dataRetirada;
 		this.dataDevolucao = dataDevolucao;
 		this.kmRodado = kmRodado;
 		this.valor = valor;
+		contador++;
 	}
 
 	public int getIdAluguel() {
