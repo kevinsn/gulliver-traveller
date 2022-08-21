@@ -3,6 +3,7 @@ import java.util.Date;
 
 public class Cliente {
 
+	private static int contador = 1;
 	private int idCliente;
 	private String nome;
 	private Date dataNascimento;
@@ -13,12 +14,13 @@ public class Cliente {
 	private Endereco endereco;
 	
 	public Cliente() {
-		
+		idCliente = contador; 
+		contador++;
 	}	
 
-	public Cliente(int idCliente, String nome, Date dataNascimento, String cpf, String celular, String email,
+	public Cliente(String nome, Date dataNascimento, String cpf, String celular, String email,
 			Date dataCriacao, Endereco endereco) {
-		this.idCliente = idCliente;
+		this.idCliente = contador;
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
 		this.cpf = cpf;
@@ -26,6 +28,7 @@ public class Cliente {
 		this.email = email;
 		this.dataCriacao = dataCriacao;
 		this.endereco = endereco;
+		contador++;
 	}
 
 	public int getIdCliente() {

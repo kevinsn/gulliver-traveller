@@ -1,6 +1,7 @@
 
 public class Endereco {
 
+	private static int contador = 1;
 	private int idEndereco;
 	private String cep;
 	private String uf;
@@ -12,12 +13,13 @@ public class Endereco {
 	private String complemento;
 	
 	public Endereco() {
-		
+		idEndereco = contador; 
+		contador++;
 	}
 	
-	public Endereco(int idEndereco, String cep, String uf, String cidade, String bairro, String tipoLogradouro,
+	public Endereco(String cep, String uf, String cidade, String bairro, String tipoLogradouro,
 			String logradouro, int numero) {
-		this.idEndereco = idEndereco;
+		this.idEndereco = contador;
 		this.cep = cep;
 		this.uf = uf;
 		this.cidade = cidade;
@@ -25,6 +27,7 @@ public class Endereco {
 		this.tipoLogradouro = tipoLogradouro;
 		this.logradouro = logradouro;
 		this.numero = numero;
+		contador++;
 	}
 		
 	public Endereco(int idEndereco, String cep, String uf, String cidade, String bairro, String tipoLogradouro,

@@ -1,6 +1,7 @@
 
 public class Veiculo {
 
+	private static int contador = 1;
 	private int idVeiculo;
 	private String marca;
 	private String modelo;
@@ -12,12 +13,13 @@ public class Veiculo {
 	private String imagem;
 	
 	public Veiculo() {
-		
+		idVeiculo = contador; 
+		contador++;
 	}
 	
-	public Veiculo(int idVeiculo, String marca, String modelo, String cor, String ano, String placa, String chassi,
+	public Veiculo(String marca, String modelo, String cor, String ano, String placa, String chassi,
 			Double km, String imagem) {
-		this.idVeiculo = idVeiculo;
+		this.idVeiculo = contador;
 		this.marca = marca;
 		this.modelo = modelo;
 		this.cor = cor;
@@ -26,6 +28,7 @@ public class Veiculo {
 		this.chassi = chassi;
 		this.km = km;
 		this.imagem = imagem;
+		contador++;
 	}
 
 	public int getIdVeiculo() {

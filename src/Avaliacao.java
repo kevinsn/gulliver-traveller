@@ -1,18 +1,22 @@
 
 public class Avaliacao {
 
+	private static int contador = 1;
 	private int idAvaliacao;
 	private String descricao;
 	private Double nota;
 	
 	public Avaliacao() {
+		idAvaliacao = contador; 
+		contador++;
 		
 	}
 	
-	public Avaliacao(int idAvaliacao, String descricao, Double nota) {
-		this.idAvaliacao = idAvaliacao;
+	public Avaliacao(String descricao, Double nota) {
+		this.idAvaliacao = contador; 
 		this.descricao = descricao;
 		this.nota = nota;
+		contador++;
 	}
 	
 	public int getIdAvaliacao() {

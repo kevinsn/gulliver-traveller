@@ -1,6 +1,7 @@
 
 public class Locadora {
-	
+
+	private static int contador = 1;
 	private int idLocadora;
 	private String nome;
 	private String cnpj;
@@ -9,16 +10,18 @@ public class Locadora {
 	private Avaliacao avaliacao; 
 	
 	public Locadora() {
-		
+		idLocadora = contador; 
+		contador++;		
 	}
 	
-	public Locadora(int idLocadora, String nome, String cnpj, String logo, Endereco endereco, Avaliacao avaliacao) {
-		this.idLocadora = idLocadora;
+	public Locadora(String nome, String cnpj, String logo, Endereco endereco, Avaliacao avaliacao) {
+		this.idLocadora = contador;
 		this.nome = nome;
 		this.cnpj = cnpj;
 		this.logo = logo;
 		this.endereco = endereco;
 		this.avaliacao = avaliacao;
+		contador++;
 	}
 
 	public int getIdLocadora() {

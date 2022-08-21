@@ -12,13 +12,13 @@ public class Aluguel {
 	private Double valor;	
 	
 	public Aluguel() {
-		idAluguel += contador;
+		idAluguel = contador;
 		contador++;
 	}
 	
 	public Aluguel(String tipoAluguel, Date dataRetirada, Date dataDevolucao, Double kmRodado,
 			Double valor) {
-		this.idAluguel += contador;
+		this.idAluguel = contador;
 		this.tipoAluguel = tipoAluguel;
 		this.dataRetirada = dataRetirada;
 		this.dataDevolucao = dataDevolucao;
