@@ -30,9 +30,9 @@ public class Endereco {
 		contador++;
 	}
 		
-	public Endereco(int idEndereco, String cep, String uf, String cidade, String bairro, String tipoLogradouro,
+	public Endereco(String cep, String uf, String cidade, String bairro, String tipoLogradouro,
 			String logradouro, int numero, String complemento) {
-		this.idEndereco = idEndereco;
+		this.idEndereco = contador;
 		this.cep = cep;
 		this.uf = uf;
 		this.cidade = cidade;
@@ -41,6 +41,7 @@ public class Endereco {
 		this.logradouro = logradouro;
 		this.numero = numero;
 		this.complemento = complemento;
+		contador++;
 	}
 
 	public int getIdEndereco() {
