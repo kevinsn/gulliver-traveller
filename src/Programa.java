@@ -4,6 +4,7 @@ import java.awt.HeadlessException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import javax.swing.JOptionPane;
 
@@ -12,6 +13,7 @@ public class Programa {
 	DateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd");	
 	String resposta = "";
 	static String[] tipoCadastro = {"Aluguel", "Endereço", "Cliente", "Avaliação", "Locadora", "Veiculo"};
+	HashSet<String> cpfs = new HashSet<String>();
 	
 	public void cadastrarAluguel() throws HeadlessException, NumberFormatException, ParseException {
 		// Aluguel
@@ -75,22 +77,27 @@ public class Programa {
 	public void cadastrarCliente() throws HeadlessException, ParseException {
 		// Cliente		
 		ArrayList<Cliente> listCliente= new ArrayList<Cliente>();
-		
-		Endereco enderecoCliente = criarEndereco();
-		
+				
 		do {        	
-			listCliente.add(
+			String cpfCliente = JOptionPane.showInputDialog("Digite o cpf: ");				
+			if (!cpfs.contains(cpfCliente)) {
+				cpfs.add(cpfCliente);
+				Endereco enderecoCliente = criarEndereco();
+				listCliente.add(
 					new Cliente(
 							JOptionPane.showInputDialog("Digite o nome: "),
 							formatoData.parse(JOptionPane.showInputDialog("Digite a data de nascimento: ")),
-							JOptionPane.showInputDialog("Digite o cpf: "),
+							cpfCliente,
 							JOptionPane.showInputDialog("Digite o celular: "),
 							JOptionPane.showInputDialog("Digite o email: "),
 							formatoData.parse(JOptionPane.showInputDialog("Digite a data da criação: ")),
 							enderecoCliente
 							));
-			
-			resposta = JOptionPane.showInputDialog("Digite <S> para continuar").toUpperCase();
+				
+				resposta = JOptionPane.showInputDialog("Digite <S> para continuar").toUpperCase();
+			} else {
+				resposta = "N";
+			}
 		} while (resposta.equals("S"));
 		
 		listCliente.forEach(
@@ -102,7 +109,7 @@ public class Programa {
 						"\nemail: " + item.getEmail() +
 						"\ndataCriacao: " + item.getDataCriacao()
 						)
-				); 
+				);
 	}
 	
 	public void cadastrarAvaliacao() {
