@@ -13,7 +13,8 @@ public class Programa {
 	DateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd");	
 	String resposta = "";
 	static String[] tipoCadastro = {"Aluguel", "Endereço", "Cliente", "Avaliação", "Locadora", "Veiculo"};
-	HashSet<String> cpfs = new HashSet<String>();
+	HashSet<String> setCpf = new HashSet<String>();
+	HashSet<String> setCnpj = new HashSet<String>();
 	
 	public void cadastrarAluguel() throws HeadlessException, NumberFormatException, ParseException {
 		// Aluguel
@@ -80,8 +81,8 @@ public class Programa {
 				
 		do {        	
 			String cpfCliente = JOptionPane.showInputDialog("Digite o cpf: ");				
-			if (!cpfs.contains(cpfCliente)) {
-				cpfs.add(cpfCliente);
+			if (!setCpf.contains(cpfCliente)) {
+				setCpf.add(cpfCliente);
 				Endereco enderecoCliente = criarEndereco();
 				listCliente.add(
 					new Cliente(
@@ -137,20 +138,25 @@ public class Programa {
 		// Locadora	
 		ArrayList<Locadora> listLocadora = new ArrayList<Locadora>();
 		
-		Endereco enderecoLocadora = criarEndereco();
-		Avaliacao avaliacaoLocadora = criarAvaliacao();
-		
-		do {        	
-			listLocadora.add(
-				new Locadora(
-						JOptionPane.showInputDialog("Digite o nome: "),
-						JOptionPane.showInputDialog("Digite o cnpj: "),
-						JOptionPane.showInputDialog("Digite o logo: "),
-						enderecoLocadora,
-						avaliacaoLocadora
-					));
+		do {       
+			String cnpjLocadora = JOptionPane.showInputDialog("Digite o cnpj: ");		 	
+			if (!setCnpj.contains(cnpjLocadora)) {
+				setCnpj.add(cnpjLocadora);
+				Endereco enderecoLocadora = criarEndereco();
+				Avaliacao avaliacaoLocadora = criarAvaliacao();
+				listLocadora.add(
+					new Locadora(
+							JOptionPane.showInputDialog("Digite o nome: "),
+							cnpjLocadora,
+							JOptionPane.showInputDialog("Digite o logo: "),
+							enderecoLocadora,
+							avaliacaoLocadora
+						));
 			
-			resposta = JOptionPane.showInputDialog("Digite <S> para continuar").toUpperCase();
+				resposta = JOptionPane.showInputDialog("Digite <S> para continuar").toUpperCase();
+			} else {
+				resposta = "N";
+			}
 		} while (resposta.equals("S"));
 		
 		listLocadora.forEach(
