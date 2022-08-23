@@ -49,15 +49,8 @@ public class Programa {
 		ArrayList<Endereco> listEndereco = new ArrayList<Endereco>();
 		do {        	
 			listEndereco.add(
-				new Endereco(
-						JOptionPane.showInputDialog("Digite o CEP: "),
-						JOptionPane.showInputDialog("Digite o estado: "),
-						JOptionPane.showInputDialog("Digite a cidade: "),
-						JOptionPane.showInputDialog("Digite o bairro: "),
-						JOptionPane.showInputDialog("Digite o tipo de logradouro: "),
-						JOptionPane.showInputDialog("Digite o logradouro: "),
-						Integer.valueOf(JOptionPane.showInputDialog("Digite o numero: "))
-						));
+						criarEndereco()
+					);
 			
 			resposta = JOptionPane.showInputDialog("Digite <S> para continuar").toUpperCase();
 		} while (resposta.equals("S"));
@@ -118,10 +111,8 @@ public class Programa {
 		ArrayList<Avaliacao> listAvaliacao = new ArrayList<Avaliacao>();
 		do {        	
 			listAvaliacao.add(
-				new Avaliacao(
-						JOptionPane.showInputDialog("Digite a descrição: "),
-						Double.valueOf(JOptionPane.showInputDialog("Digite a nota: "))
-					));
+						criarAvaliacao()
+					);
 			
 			resposta = JOptionPane.showInputDialog("Digite <S> para continuar").toUpperCase();
 		} while (resposta.equals("S"));
